@@ -14,8 +14,10 @@ public class OI {
     public OI() {
         // Back button zeroes the drivetrain
         new JoystickButton(primaryJoystick, 7).whenPressed(
-                new InstantCommand(() -> DrivetrainSubsystem.getInstance().getGyroscope().setAdjustmentAngle(
-                        DrivetrainSubsystem.getInstance().getGyroscope().getUnadjustedAngle())
+                new InstantCommand(() -> {
+                    DrivetrainSubsystem.getInstance().getGyroscope().setAdjustmentAngle(
+                        DrivetrainSubsystem.getInstance().getGyroscope().getUnadjustedAngle());
+                }
                 )
         );
     }
