@@ -13,8 +13,9 @@ import org.frcteam2910.common.drivers.Gyroscope;
 import org.frcteam2910.common.drivers.SwerveModule;
 import org.frcteam2910.common.math.Vector2;
 import org.frcteam2910.common.robot.drivers.Mk2SwerveModule;
-import org.frcteam2910.common.robot.drivers.NavX;
+// import org.frcteam2910.common.robot.drivers.NavX;
 import org.frcteam2910.common.robot.subsystems.SwerveDrivetrain;
+import com.swervedrivespecialties.exampleswerve.drivers.NavX;;
 
 public class DrivetrainSubsystem extends SwerveDrivetrain {
     private static final double TRACKWIDTH = 19.5;
@@ -30,7 +31,7 @@ public class DrivetrainSubsystem extends SwerveDrivetrain {
 
     private final SwerveModule[] swerveModules;
 
-    private final Gyroscope gyroscope = new Pigeon(0);
+    private final Gyroscope gyroscope = new NavX(1);
 
     public DrivetrainSubsystem() {
         gyroscope.calibrate();
