@@ -1,8 +1,10 @@
 package com.swervedrivespecialties.exampleswerve;
 
+import com.swervedrivespecialties.exampleswerve.commands.VisionDriveCommands.AlignToTarget;
 import com.swervedrivespecialties.exampleswerve.subsystems.DrivetrainSubsystem;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.XboxController;
+import edu.wpi.first.wpilibj.XboxController.Button;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
 import edu.wpi.first.wpilibj.command.InstantCommand;
 
@@ -20,6 +22,9 @@ public class OI {
                 }
                 )
         );
+
+        JoystickButton DriverA = new JoystickButton(xbox1, 1);
+        DriverA.whileHeld(new AlignToTarget());
     }
 
     public XboxController getXbox1() {

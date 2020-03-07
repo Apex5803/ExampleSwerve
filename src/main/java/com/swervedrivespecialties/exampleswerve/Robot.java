@@ -10,6 +10,7 @@ import com.swervedrivespecialties.exampleswerve.subsystems.*;
 import edu.wpi.cscore.UsbCamera;
 import edu.wpi.cscore.VideoMode.PixelFormat;
 import edu.wpi.first.cameraserver.CameraServer;
+import edu.wpi.first.networktables.NetworkTableInstance;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
@@ -73,6 +74,8 @@ public class Robot extends TimedRobot {
         Scheduler.getInstance().run();
         // SmartDashboard.putNumber("ShooterRPMS", shooter.getRPMS());
     //    SmartDashboard.putNumber("SteerCommand", limelight.getSteerCommand());
+    SmartDashboard.putNumber("tv", NetworkTableInstance.getDefault().getTable("limelight").getEntry("tv").getDouble(0));
+    SmartDashboard.putNumber("tx", NetworkTableInstance.getDefault().getTable("limelight").getEntry("tx").getDouble(0));
     }
 
 

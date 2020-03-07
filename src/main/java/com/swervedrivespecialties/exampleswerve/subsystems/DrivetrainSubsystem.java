@@ -34,13 +34,13 @@ import org.frcteam2910.common.robot.drivers.Mk2SwerveModuleBuilder;
 import com.swervedrivespecialties.exampleswerve.drivers.*;
 
 public class DrivetrainSubsystem extends Subsystem {
-    private static final double TRACKWIDTH = 28.5;
-    private static final double WHEELBASE = 17.375;
+    private static final double TRACKWIDTH = 28.5;// 28.5
+    private static final double WHEELBASE = 17.375; //17.375
 
-    private static final double FRONT_LEFT_ANGLE_OFFSET = -Math.toRadians(40.5);
-    private static final double FRONT_RIGHT_ANGLE_OFFSET = -Math.toRadians(128.5);
-    private static final double BACK_LEFT_ANGLE_OFFSET = -Math.toRadians(276.15);
-    private static final double BACK_RIGHT_ANGLE_OFFSET = -Math.toRadians(332.65);
+    private static final double FRONT_LEFT_ANGLE_OFFSET = -Math.toRadians(7.11);
+    private static final double FRONT_RIGHT_ANGLE_OFFSET = -Math.toRadians(68.00);
+    private static final double BACK_LEFT_ANGLE_OFFSET = -Math.toRadians(292.00);
+    private static final double BACK_RIGHT_ANGLE_OFFSET = -Math.toRadians(69.15);
     private CANSparkMax FrontLeftAngleMotor;
     private CANSparkMax FrontLeftDriveMotor;
     private CANSparkMax FrontRightAngleMotor;
@@ -108,7 +108,7 @@ public class DrivetrainSubsystem extends Subsystem {
         // FrontLeftDriveMotor.configSupplyCurrentLimit(new SupplyCurrentLimitConfiguration(true, 30, 35, 0.2));
         // FrontLeftDriveMotor.setNeutralMode(NeutralMode.Coast);
         FrontLeftDriveMotor.setInverted(false);
-        // FrontRightDriveMotor.setInverted(true);
+        FrontRightDriveMotor.setInverted(true);
         // FrontRightAngleMotor.configSupplyCurrentLimit(new SupplyCurrentLimitConfiguration(true, 30, 35, 0.2));
         // FrontRightAngleMotor.setNeutralMode(NeutralMode.Brake);
         // FrontRightDriveMotor.configSupplyCurrentLimit(new SupplyCurrentLimitConfiguration(true, 30, 35, 0.2));

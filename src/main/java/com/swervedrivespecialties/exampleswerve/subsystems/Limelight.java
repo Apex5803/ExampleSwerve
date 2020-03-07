@@ -14,6 +14,7 @@ import com.swervedrivespecialties.exampleswerve.RobotMap;
 import edu.wpi.first.cameraserver.*;
 import edu.wpi.first.networktables.NetworkTableInstance;
 import edu.wpi.first.wpilibj.Solenoid;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.networktables.*;
 import edu.wpi.first.networktables.NetworkTable;
 import edu.wpi.first.networktables.NetworkTableEntry;
@@ -45,6 +46,7 @@ public class Limelight extends SubsystemBase {
       HasValidTarget = true;
       ShooterAngle = ty;
       SteerCommand = tx / 29.8; //converts tx to steer comand between -1 and 1 so that its easier
+      // SteerCommand = tx;
     }
     else{
       
@@ -56,11 +58,14 @@ public class Limelight extends SubsystemBase {
   }
   public double getSteerCommand(){
     UpdateLimelightTracking();
+    SmartDashboard.putNumber("Limelight Rotation", SteerCommand);
     return SteerCommand;
+    
     
   }
   @Override
   public void periodic() {
+
     // This method will be called once per scheduler run
     
   }
