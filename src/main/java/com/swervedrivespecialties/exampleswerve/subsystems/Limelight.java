@@ -77,6 +77,14 @@ public class Limelight extends SubsystemBase {
 //   public void disableLED(){
 //     ledRing.set(false);
 //   }
+
+public void turnLightsOn(){
+  NetworkTableInstance.getDefault().getTable("limelight").getEntry("ledMode").setNumber(3);
+}
+
+public void turnLightsOff(){
+  NetworkTableInstance.getDefault().getTable("limelight").getEntry("ledMode").setNumber(1);
+}
   public static Limelight getInstance() {
     if (instance == null) {
         instance = new Limelight();

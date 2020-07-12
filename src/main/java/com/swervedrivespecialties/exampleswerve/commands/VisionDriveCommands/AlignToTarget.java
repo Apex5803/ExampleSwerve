@@ -25,6 +25,7 @@ public class AlignToTarget extends Command {
   // Called just before this Command runs the first time
   @Override
   protected void initialize() {
+    Robot.limelight.turnLightsOn();
   }
 
   // Called repeatedly when this Command is scheduled to run
@@ -42,10 +43,10 @@ public class AlignToTarget extends Command {
 
     double rotation = Robot.limelight.getSteerCommand();
     if (rotation > 0){
-      rotationPostMath = -1/(1+ 99 * Math.pow(Math.E, -9 * rotation));
+      rotationPostMath = 1/(1+ 99 * Math.pow(Math.E, -9 * rotation));
     }
     else if (rotation < 0){
-      rotationPostMath = 1/(1+ 99 * Math.pow(Math.E, 9 * rotation));
+      rotationPostMath = -1/(1+ 99 * Math.pow(Math.E, 9 * rotation));
     }
     else {
       rotationPostMath = 0.0;
@@ -65,7 +66,7 @@ public class AlignToTarget extends Command {
     // // Square the rotation stick
     // rotation = Math.copySign(Math.pow(rotation, 2.0), rotation);
 System.out.println("rotationPostMath = "+ rotationPostMath);
-    Robot.drivetrain.drive(new Translation2d(forward, strafe), -rotationPostMath, Robot.drivetrain.fieldOriented);
+    Robot.drivetrain.drive(new Translation2d(forward, strafe), rotationPostMath, Robot.drivetrain.fieldOriented);
   }
 
   // Make this return true when this Command no longer needs to run execute()
@@ -77,11 +78,13 @@ System.out.println("rotationPostMath = "+ rotationPostMath);
   // Called once after isFinished returns true
   @Override
   protected void end() {
+    Robot.limelight.turnLightsOff();
   }
 
   // Called when another command which requires one or more of the same
   // subsystems is scheduled to run
   @Override
   protected void interrupted() {
+    end();
   }
 }

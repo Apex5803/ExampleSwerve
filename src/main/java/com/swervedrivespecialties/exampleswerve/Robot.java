@@ -54,10 +54,11 @@ public class Robot extends TimedRobot {
         // colorWheel = ColorWheel.getInstance();
         limelight = Limelight.getInstance();
         pixyCam = PixyCam.getInstance();
+        // pixyCam = new PixyCam();
         oi = new OI();
 
-        UsbCamera camera1 = CameraServer.getInstance().startAutomaticCapture(0);
-        camera1.setVideoMode(PixelFormat.kMJPEG, 160, 120, 20);// pixel format, x pixels, y pixels, FPS
+        // UsbCamera camera1 = CameraServer.getInstance().startAutomaticCapture(0);
+        // camera1.setVideoMode(PixelFormat.kMJPEG, 160, 120, 20);// pixel format, x pixels, y pixels, FPS
 
         m_chooser.setDefaultOption("DriveFromLine", "DriveFromLine");
         // m_chooser.addOption("DriveFromLine", "DriveFromLine");
@@ -76,7 +77,10 @@ public class Robot extends TimedRobot {
     //    SmartDashboard.putNumber("SteerCommand", limelight.getSteerCommand());
     SmartDashboard.putNumber("tv", NetworkTableInstance.getDefault().getTable("limelight").getEntry("tv").getDouble(0));
     SmartDashboard.putNumber("tx", NetworkTableInstance.getDefault().getTable("limelight").getEntry("tx").getDouble(0));
-    }
+    // SmartDashboard.putNumber("PixyCommand", pixyCam.getProportionalX());
+    // SmartDashboard.putNumber("Pixy x", pixyCam.getBiggestBlock().getX());
+        // SmartDashboard.putBoolean("PixyIsConnected?", value)
+}
 
 
     public void disabledInit(){
@@ -84,7 +88,9 @@ public class Robot extends TimedRobot {
     }
 
     public void disabledPeriodic(){
-
+    //    SmartDashboard.putNumber("PixyX", pixyCam.getAbsoluteX());
+       SmartDashboard.putBoolean("HasTarget", pixyCam.PixyHasTarget());
+       SmartDashboard.putNumber("TargetCount", pixyCam.PixyTargetCount());
     }
 
     public void autonomousInit(){
@@ -117,12 +123,17 @@ public class Robot extends TimedRobot {
 
     
     public void teleopInit(){
+       
         // new RetractHood();
         
     }
 
     public void teleopPeriodic(){
-        
+        // SmartDashboard.putNumber("Pixy x", pixyCam.getProportionalX());
+        // SmartDashboard.putNumber("PixyX", pixyCam.getAbsoluteX());
+        SmartDashboard.putBoolean("HasTarget", pixyCam.PixyHasTarget());
+        SmartDashboard.putNumber("TargetCount", pixyCam.PixyTargetCount());
+
 
     }
 }
